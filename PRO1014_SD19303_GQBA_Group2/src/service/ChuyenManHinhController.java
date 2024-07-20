@@ -1,7 +1,7 @@
 
 package service;
 
-import entity.DanhMuc;
+import entity.SanPham.DanhMuc;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.List;

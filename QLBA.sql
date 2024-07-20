@@ -51,9 +51,9 @@ CREATE TABLE HoaDon (
 
 
 -- Create table Size
-CREATE TABLE Size (
+CREATE TABLE KichCo (
     ID INT PRIMARY KEY IDENTITY,
-    TenSize VARCHAR(50)
+    TenKichCo VARCHAR(50)
 );
 
 -- Create table TheLoai
@@ -72,26 +72,25 @@ CREATE TABLE ChatLieu (
     TenChatLieu NVARCHAR(100)
 );
 
+
 -- Create table SanPhamChiTiet
 CREATE TABLE SanPhamChiTiet (
     ID INT PRIMARY KEY IDENTITY,
     ID_TheLoai INT,
     ID_ChatLieu INT,
     ID_MauSac INT,
-    ID_Size INT,
-    ID_SanPham INT,
-    MaSP VARCHAR(50),
+    ID_KichCo INT,
+	MaSP VARCHAR(30),
+	TenSP NVARCHAR(50),
     Anh VARCHAR(50),
     MoTa VARCHAR(50),
     DonGia DECIMAL(18, 2),
     SoLuong INT,
-    TrangThai BIT,
     FOREIGN KEY (ID_TheLoai) REFERENCES TheLoai(ID),
     FOREIGN KEY (ID_MauSac) REFERENCES MauSac(ID),
 	FOREIGN KEY (ID_ChatLieu) REFERENCES ChatLieu(ID),
-    FOREIGN KEY (ID_Size) REFERENCES Size(ID)
+    FOREIGN KEY (ID_KichCo) REFERENCES KichCo(ID)
 );
-
 -- Create table HoaDonChiTiet
 CREATE TABLE HoaDonChiTiet (
     ID INT PRIMARY KEY IDENTITY,
@@ -103,6 +102,7 @@ CREATE TABLE HoaDonChiTiet (
     FOREIGN KEY (ID_HoaDon) REFERENCES HoaDon(ID)
 );
 GO
+
 
 -- Insert data into ChucVu
 INSERT INTO ChucVu (TenChucVu) VALUES
@@ -137,7 +137,7 @@ INSERT INTO HoaDon (ID_NhanVien, ID_KhachHang, MaHoaDon, TongTien, NgayThanhToan
 (5, 5, 'HD005', 500000.00, '2024-05-01', 1, N'Paid');
 
 -- Insert data into Size
-INSERT INTO Size (TenSize) VALUES
+INSERT INTO KichCo (TenKichCo) VALUES
 ('Small'),
 ('Medium'),
 ('Large'),
@@ -169,13 +169,16 @@ INSERT INTO ChatLieu (TenChatLieu) VALUES
 (N'Wool');
 
 -- Insert data into SanPhamChiTiet
-INSERT INTO SanPhamChiTiet (ID_TheLoai, ID_ChatLieu, ID_MauSac, ID_Size, ID_SanPham, MaSP, Anh, MoTa, DonGia, SoLuong, TrangThai) VALUES
-(1, 1, 1, 1, 1, 'SP001', 'product1.jpg', N'Sample Product 1', 100000.00, 10, 1),
-(2, 2, 2, 2, 2, 'SP002', 'product2.jpg', N'Sample Product 2', 200000.00, 20, 1),
-(3, 3, 3, 3, 3, 'SP003', 'product3.jpg', N'Sample Product 3', 300000.00, 30, 1),
-(4, 4, 4, 4, 4, 'SP004', 'product4.jpg', N'Sample Product 4', 400000.00, 40, 1),
-(5, 5, 5, 5, 5, 'SP005', 'product5.jpg', N'Sample Product 5', 500000.00, 50, 1);
+INSERT INTO SanPhamChiTiet (ID_TheLoai, ID_ChatLieu, ID_MauSac, ID_KichCo,TenSP, MaSP, Anh, MoTa, DonGia, SoLuong) VALUES
+(1, 1, 1, 1, 'SP001',  'San Pham 1','', N'Sample Product 1', 100000.00, 10),
+(1, 1, 1, 1, 'SP001',  'San Pham 1','product1.jpg', N'Sample Product 1', 100000.00, 10),
+(2, 2, 2, 2, 'SP002', 'San Pham 2', 'product2.jpg', N'Sample Product 2', 200000.00, 20),
+(3, 3, 3, 3, 'SP003', 'San Pham 3', 'product3.jpg', N'Sample Product 3', 300000.00, 30),
+(4, 4, 4, 4, 'SP004', 'San Pham 4', 'product4.jpg', N'Sample Product 4', 400000.00, 40),
+(5, 5, 5, 5, 'SP005', 'San Pham 5',  'product5.jpg', N'Sample Product 5', 500000.00, 50);
 
+ALTER TABLE SanPhamChiTiet
+DROP COLUMN TrangThai
 -- Insert data into HoaDonChiTiet
 INSERT INTO HoaDonChiTiet (ID_SanPhamChiTiet, ID_HoaDon, SoLuong, DonGia) VALUES
 (1, 1, 1, 100000.00),
@@ -183,4 +186,30 @@ INSERT INTO HoaDonChiTiet (ID_SanPhamChiTiet, ID_HoaDon, SoLuong, DonGia) VALUES
 (3, 3, 3, 300000.00),
 (4, 4, 4, 400000.00),
 (5, 5, 5, 500000.00);
+
+
+select MaSP,TenSP,Anh,MoTa,DonGia,SoLuong,b.TenTheLoai as TheLoai, c.TenChatLieu as ChatLieu, d.TenMauSac as MauSac, e.TenKichCo as KichCo   from SanPhamChiTiet a  
+inner join TheLoai b on  a.ID_TheLoai = b.ID 
+inner join ChatLieu c on a.ID_ChatLieu = c.ID 
+inner join MauSac d on a.ID_MauSac = d.ID 
+inner join KichCo e on a.ID_KichCo = e.ID
+
+INSERT INTO SanPhamChiTiet(ID_TheLoai, ID_ChatLieu, ID_MauSac, ID_KichCo, MaSP,TenSP,Anh,MoTa,DonGia,SoLuong) VALUES (?,?,?,?,?,?,?,?,?,?)
+
+SELECT COUNT(*) AS total FROM SanPhamChiTiet
+
+delete from SanPhamChiTiet where ID = ?
+
+
+
+
+
+
+
+
+
+
+
+
+
 
