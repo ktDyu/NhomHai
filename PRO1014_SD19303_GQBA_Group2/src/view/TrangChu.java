@@ -4,7 +4,7 @@
  */
 package view;
 
-import entity.DanhMuc;
+import entity.SanPham.DanhMuc;
 import java.util.ArrayList;
 import java.util.List;
 import java.text.SimpleDateFormat;
@@ -426,7 +426,7 @@ public class TrangChu extends javax.swing.JFrame {
         jpnView.setLayout(jpnViewLayout);
         jpnViewLayout.setHorizontalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1293, Short.MAX_VALUE)
+            .addGap(0, 1285, Short.MAX_VALUE)
         );
         jpnViewLayout.setVerticalGroup(
             jpnViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -441,7 +441,7 @@ public class TrangChu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jpnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, 1293, Short.MAX_VALUE))
+                .addComponent(jpnView, javax.swing.GroupLayout.DEFAULT_SIZE, 1285, Short.MAX_VALUE))
         );
         jpnRootLayout.setVerticalGroup(
             jpnRootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,9 +463,8 @@ public class TrangChu extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpnRoot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jpnRoot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
