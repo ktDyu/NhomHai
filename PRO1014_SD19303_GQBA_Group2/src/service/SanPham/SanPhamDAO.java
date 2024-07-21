@@ -61,8 +61,8 @@ public class SanPhamDAO {
         PreparedStatement stm = null;
         ResultSet resultSet = null;
         try {
+            
             conn = DBcontext.getConnection();
-
             // Tạo mã sản phẩm tự động
             String countQuery = "SELECT COUNT(*) AS total FROM SanPhamChiTiet";
             Statement statement = conn.createStatement();
@@ -71,11 +71,12 @@ public class SanPhamDAO {
             int totalProducts = resultSet.getInt("total");
             resultSet.close();
             statement.close();
-            String newMasp = String.format("SP", totalProducts + 1);
+            String newMasp = String.format("SP%04d", totalProducts + 1);
 
             String sql = "INSERT INTO SanPhamChiTiet(ID_TheLoai, ID_ChatLieu, ID_MauSac, ID_KichCo, MaSP,TenSP,Anh,MoTa,DonGia,SoLuong) VALUES (?,?,?,?,?,?,?,?,?,?)";
             
             stm = conn.prepareStatement(sql);
+            
             stm.setInt(1, sp.getIdTheLoai());
             stm.setInt(2, sp.getIdChatLieu());
             stm.setInt(3, sp.getIdMauSac());
@@ -104,15 +105,15 @@ public class SanPhamDAO {
         return -1;
     }
 
-    public int del(int id) {
+    public int del(String masp) {
 
         Connection conn = null;
         PreparedStatement stm = null;
         try {
-            String sql = "delete from SanPhamChiTiet where ID = ?";
+            String sql = "delete from SanPhamChiTiet where MaSP = ?";
             conn = DBcontext.getConnection();
             stm = conn.prepareStatement(sql);
-            stm.setInt(1, id);
+            stm.setString(1, masp);
             stm.executeUpdate();
             if (stm.executeUpdate() > 0) {
                 System.out.println("Xoa Thanh cong");
@@ -135,7 +136,7 @@ public class SanPhamDAO {
         PreparedStatement stm = null;
         try {
             String sql = " update SanPhamChiTiet set TenSP=? ,Anh =?,MoTa = ?,DonGia = ?, SoLuong =?, ID_TheLoai = ?, ID_ChatLieu = ?, ID_MauSac = ?, ID_KichCo = ?\n"
-                    + " where ID = ?";
+                    + " where MaSP = ?";
             conn = DBcontext.getConnection();
             stm = conn.prepareStatement(sql);
             stm.setString(1, sp.getTenSp());
@@ -147,7 +148,7 @@ public class SanPhamDAO {
             stm.setInt(7, sp.getIdChatLieu());
             stm.setInt(8, sp.getIdMauSac());
             stm.setInt(9, sp.getIdKichCo());
-            stm.setInt(10, sp.getId());
+            stm.setString(10, sp.getMaSp());
             if (stm.executeUpdate() > 0) {
                 System.out.println("Sửa Thành Công");
                 return 1;

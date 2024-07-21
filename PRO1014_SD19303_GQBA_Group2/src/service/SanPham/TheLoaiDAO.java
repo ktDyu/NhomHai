@@ -87,7 +87,7 @@ public class TheLoaiDAO {
         Connection conn = null;
         PreparedStatement stm = null;
         try {
-            String sql = "  update TheLoai set TenTheLoai = ?  where ID =? ";
+            String sql = "  update TheLoai set TenTheLoai = ?  where ID = ? ";
             conn = DBcontext.getConnection();
             stm = conn.prepareStatement(sql);
             stm.setString(1, tl.getTenTheloai());

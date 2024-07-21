@@ -84,7 +84,7 @@ CREATE TABLE SanPhamChiTiet (
 	TenSP NVARCHAR(50),
     Anh VARCHAR(50),
     MoTa VARCHAR(50),
-    DonGia DECIMAL(18, 2),
+    DonGia Float,
     SoLuong INT,
     FOREIGN KEY (ID_TheLoai) REFERENCES TheLoai(ID),
     FOREIGN KEY (ID_MauSac) REFERENCES MauSac(ID),
@@ -169,7 +169,7 @@ INSERT INTO ChatLieu (TenChatLieu) VALUES
 (N'Wool');
 
 -- Insert data into SanPhamChiTiet
-INSERT INTO SanPhamChiTiet (ID_TheLoai, ID_ChatLieu, ID_MauSac, ID_KichCo,TenSP, MaSP, Anh, MoTa, DonGia, SoLuong) VALUES
+INSERT INTO SanPhamChiTiet (ID_TheLoai, ID_ChatLieu, ID_MauSac, ID_KichCo,MaSP, TenSP, Anh, MoTa, DonGia, SoLuong) VALUES
 (1, 1, 1, 1, 'SP001',  'San Pham 1','', N'Sample Product 1', 100000.00, 10),
 (1, 1, 1, 1, 'SP001',  'San Pham 1','product1.jpg', N'Sample Product 1', 100000.00, 10),
 (2, 2, 2, 2, 'SP002', 'San Pham 2', 'product2.jpg', N'Sample Product 2', 200000.00, 20),
@@ -177,8 +177,6 @@ INSERT INTO SanPhamChiTiet (ID_TheLoai, ID_ChatLieu, ID_MauSac, ID_KichCo,TenSP,
 (4, 4, 4, 4, 'SP004', 'San Pham 4', 'product4.jpg', N'Sample Product 4', 400000.00, 40),
 (5, 5, 5, 5, 'SP005', 'San Pham 5',  'product5.jpg', N'Sample Product 5', 500000.00, 50);
 
-ALTER TABLE SanPhamChiTiet
-DROP COLUMN TrangThai
 -- Insert data into HoaDonChiTiet
 INSERT INTO HoaDonChiTiet (ID_SanPhamChiTiet, ID_HoaDon, SoLuong, DonGia) VALUES
 (1, 1, 1, 100000.00),
@@ -187,6 +185,7 @@ INSERT INTO HoaDonChiTiet (ID_SanPhamChiTiet, ID_HoaDon, SoLuong, DonGia) VALUES
 (4, 4, 4, 400000.00),
 (5, 5, 5, 500000.00);
 
+Delete from HoaDon where id = 1
 
 select MaSP,TenSP,Anh,MoTa,DonGia,SoLuong,b.TenTheLoai as TheLoai, c.TenChatLieu as ChatLieu, d.TenMauSac as MauSac, e.TenKichCo as KichCo   from SanPhamChiTiet a  
 inner join TheLoai b on  a.ID_TheLoai = b.ID 
@@ -194,13 +193,18 @@ inner join ChatLieu c on a.ID_ChatLieu = c.ID
 inner join MauSac d on a.ID_MauSac = d.ID 
 inner join KichCo e on a.ID_KichCo = e.ID
 
-INSERT INTO SanPhamChiTiet(ID_TheLoai, ID_ChatLieu, ID_MauSac, ID_KichCo, MaSP,TenSP,Anh,MoTa,DonGia,SoLuong) VALUES (?,?,?,?,?,?,?,?,?,?)
+delete from SanPhamChiTiet where ID = 7
+ select*from SanPhamChiTiet
+INSERT INTO SanPhamChiTiet(ID_TheLoai) VALUES 
+(1)
 
 SELECT COUNT(*) AS total FROM SanPhamChiTiet
 
 delete from SanPhamChiTiet where ID = ?
-
-
+ select *from TheLoai
+ update TheLoai set TenTheLoai = 'duy new'  where ID = 7
+ update SanPhamChiTiet set TenSP = 'okk' 
+where ID = 7
 
 
 
