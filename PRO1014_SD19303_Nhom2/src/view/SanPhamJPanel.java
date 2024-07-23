@@ -298,7 +298,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
 
         if (sp.getAnh() != null && !sp.getAnh().trim().isEmpty()) {
             this.lblAnh.setText("");
-            ImageIcon imgHinhAnh = new ImageIcon("D:\\DuAn1\\PRO1014_SD19303_GQBA_Group2\\img/" + sp.getAnh());
+            ImageIcon imgHinhAnh = new ImageIcon("D:\\DuAn1\\PRO1014_SD19303_Nhom2\\img/" + sp.getAnh());
             Image img = imgHinhAnh.getImage();
             this.HinhAnh = sp.getAnh();
             this.lblAnh.setIcon(new ImageIcon(img.getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
@@ -339,7 +339,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
 
         if (sp.getAnh() != null && !sp.getAnh().trim().isEmpty()) {
             this.lblAnh.setText("");
-            ImageIcon imgHinhAnh = new ImageIcon("D:\\DuAn1\\PRO1014_SD19303_GQBA_Group2\\img/" + sp.getAnh());
+            ImageIcon imgHinhAnh = new ImageIcon("D:\\DuAn1\\PRO1014_SD19303_Nhom2\\img/" + sp.getAnh());
             Image img = imgHinhAnh.getImage();
             this.HinhAnh = sp.getAnh();
             this.lblAnh.setIcon(new ImageIcon(img.getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
@@ -383,7 +383,7 @@ public class SanPhamJPanel extends javax.swing.JPanel {
 
     void selectImage() {
         try {
-            JFileChooser jfc = new JFileChooser("D:\\DuAn1\\PRO1014_SD19303_GQBA_Group2\\img/");
+            JFileChooser jfc = new JFileChooser("D:\\DuAn1\\PRO1014_SD19303_Nhom2\\img/");
             jfc.showOpenDialog(null);
             File file = jfc.getSelectedFile();
             this.HinhAnh = file.getName();
