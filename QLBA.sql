@@ -42,7 +42,7 @@ CREATE TABLE HoaDon (
     MaHoaDon VARCHAR(40),
     TongTien DECIMAL(18, 2),
 	DiaChi NVARCHAR(40),
-    NgayThanhToan DATE,
+    NgayThanhToan DATE DEFAULT GETDATE(),
     TrangThai BIT,
     MoTa NVARCHAR(255),
     FOREIGN KEY (ID_NhanVien) REFERENCES NhanVien(ID),
