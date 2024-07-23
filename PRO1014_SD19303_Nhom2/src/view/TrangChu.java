@@ -16,13 +16,16 @@ public class TrangChu extends javax.swing.JFrame {
     private Timer timer;
 
    
-    public TrangChu() {
+    public TrangChu(String tenNV, String cv, String maNV  ) {
         initComponents();
+        lblTenNV.setText(tenNV);
+        lblTenCV.setText(cv);
+        updateDateTime();
         startClock();
         setLocationRelativeTo(null);
         setTitle("Quản lí Bán Áo");
         
-        ChuyenManHinhController controller = new ChuyenManHinhController(jpnView);
+        ChuyenManHinhController controller = new ChuyenManHinhController(jpnView,maNV);
         controller.setview(jpnBanHang, lblBanHang);
         
        List<DanhMuc> listItem = new ArrayList<>();
@@ -37,15 +40,6 @@ public class TrangChu extends javax.swing.JFrame {
     }
 
 
-    public static void main(String args[]) {
-       
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TrangChu().setVisible(true);
-            }
-        });
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -53,8 +47,8 @@ public class TrangChu extends javax.swing.JFrame {
         jpnRoot = new javax.swing.JPanel();
         jpnMenu = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
-        lbtennv = new javax.swing.JLabel();
-        lbtencv = new javax.swing.JLabel();
+        lblTenNV = new javax.swing.JLabel();
+        lblTenCV = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -84,13 +78,13 @@ public class TrangChu extends javax.swing.JFrame {
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 204));
 
-        lbtennv.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lbtennv.setForeground(new java.awt.Color(255, 0, 0));
-        lbtennv.setText(".....");
+        lblTenNV.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblTenNV.setForeground(new java.awt.Color(255, 0, 0));
+        lblTenNV.setText(".....");
 
-        lbtencv.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lbtencv.setForeground(new java.awt.Color(255, 0, 0));
-        lbtencv.setText(".....");
+        lblTenCV.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblTenCV.setForeground(new java.awt.Color(255, 0, 0));
+        lblTenCV.setText(".....");
 
         jLabel1.setText("Tên NV :");
 
@@ -134,11 +128,11 @@ public class TrangChu extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel12Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbtencv))
+                                .addComponent(lblTenCV))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel12Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbtennv))))
+                                .addComponent(lblTenNV))))
                     .addComponent(lbnow))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -149,11 +143,11 @@ public class TrangChu extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbtennv)
+                            .addComponent(lblTenNV)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbtencv)
+                            .addComponent(lblTenCV)
                             .addComponent(jLabel2)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
@@ -305,6 +299,11 @@ public class TrangChu extends javax.swing.JFrame {
 
         jpnThongKe.setBackground(new java.awt.Color(153, 255, 255));
         jpnThongKe.setPreferredSize(new java.awt.Dimension(132, 69));
+        jpnThongKe.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                jpnThongKeComponentMoved(evt);
+            }
+        });
 
         lblThongKe.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -353,6 +352,11 @@ public class TrangChu extends javax.swing.JFrame {
         );
 
         jPanel11.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel11MouseClicked(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -482,6 +486,15 @@ public class TrangChu extends javax.swing.JFrame {
     private void jpnKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpnKhachHangMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jpnKhachHangMouseClicked
+
+    private void jpnThongKeComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jpnThongKeComponentMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpnThongKeComponentMoved
+
+    private void jPanel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel11MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jPanel11MouseClicked
 private void startClock() {
         timer = new Timer(true);
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -530,9 +543,9 @@ private void startClock() {
     private javax.swing.JLabel lblKhachHang;
     private javax.swing.JLabel lblNhanVien;
     private javax.swing.JLabel lblSanPham;
+    private javax.swing.JLabel lblTenCV;
+    private javax.swing.JLabel lblTenNV;
     private javax.swing.JLabel lblThongKe;
     private javax.swing.JLabel lbnow;
-    private javax.swing.JLabel lbtencv;
-    private javax.swing.JLabel lbtennv;
     // End of variables declaration//GEN-END:variables
 }

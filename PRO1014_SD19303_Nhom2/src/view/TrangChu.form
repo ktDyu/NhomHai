@@ -138,12 +138,12 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lbtencv" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTenCV" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lbtennv" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblTenNV" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -160,12 +160,12 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lbtennv" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTenNV" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lbtencv" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTenCV" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -178,7 +178,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lbtennv">
+                <Component class="javax.swing.JLabel" name="lblTenNV">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="1"/>
@@ -189,7 +189,7 @@
                     <Property name="text" type="java.lang.String" value="....."/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lbtencv">
+                <Component class="javax.swing.JLabel" name="lblTenCV">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="1"/>
@@ -503,6 +503,9 @@
                   <Dimension value="[132, 69]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="componentMoved" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jpnThongKeComponentMoved"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -587,6 +590,9 @@
                   <Color blue="ff" green="ff" red="99" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel11MouseClicked"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
