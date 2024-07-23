@@ -23,12 +23,13 @@ import view.ThongKeJPanel;
  * @author TranDyu
  */
 public class ChuyenManHinhController {
-
+    private String manv;
     private JPanel root;
     private String kindSelected = "";
     private List<DanhMuc> listItem = null;
 
-    public ChuyenManHinhController(JPanel jpnRoot) {   
+    public ChuyenManHinhController(JPanel jpnRoot,String customString) {   
+        manv = customString;
         this.root = jpnRoot;
     }
 
