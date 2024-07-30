@@ -24,13 +24,16 @@ import view.ThongKeJPanel;
  */
 public class ChuyenManHinhController {
     private String manv;
+     private String tennv;
     private JPanel root;
     private String kindSelected = "";
     private List<DanhMuc> listItem = null;
 
-    public ChuyenManHinhController(JPanel jpnRoot,String customString) {   
-        manv = customString;
+    public ChuyenManHinhController(JPanel jpnRoot,String customString, String tenNV) {   
+       // manv = customString;
         this.root = jpnRoot;
+        manv = customString;
+        tennv = tenNV;
     }
 
     public void setview(JPanel jpnItem, JLabel jlbItem) {
@@ -40,7 +43,7 @@ public class ChuyenManHinhController {
 
         root.removeAll();
         root.setLayout(new BorderLayout());
-        root.add(new BanHangJPanel());
+        root.add(new BanHangJPanel(manv,tennv));
         root.validate();
         root.repaint();
     }
@@ -71,7 +74,7 @@ public class ChuyenManHinhController {
             System.out.println(kind);
             switch (kind) {
                 case "BanHang":
-                    node = new BanHangJPanel();
+                    node = new BanHangJPanel(manv,tennv);
                     break;
                 case "SanPham":
                     node = new SanPhamJPanel();
